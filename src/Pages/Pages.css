@@ -1,0 +1,41 @@
+.left {
+    display: flex;
+    /* width: 100%; */
+    justify-content: "flex-start";
+    color: green;
+    align-items: flex-end;
+}
+
+.right {
+    /* width: 100%; */
+    display: flex;
+    justify-content: "flex-end"
+}
+
+/* width: "100%", display: "flex", justifyContent: "flex-end" */
+
+
+/*
+CHAT
+*/
+
+.Chat {
+    color: black;
+    width: 100vw;
+
+}
+
+.join {
+    margin-left: 250px;
+    padding-left: 50px;
+    /* margin-top: 60px; */
+    height: 100vh;
+    display: flex;
+    background-color: aquamarine;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.enter {
+  text-align: center;
+}
