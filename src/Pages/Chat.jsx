@@ -4,16 +4,16 @@ import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import Sidepanel from '../Components/Sidepanel';
 import Chats from '../Components/Chats';
-import Chatbox from './Chatbox';
+import Chatbox from '../Components/Chatbox';
 
 const Chat = () => {
     const token= useSelector((state)=>state.user.token)
-    console.log(token)
+    // console.log(token)
 
     
     const location= useLocation();
     const room= location.pathname.split("/")[2];
-    console.log(room)
+    // console.log(room)
     const [roomName, setRoomName]= useState("")
 
     let navigate= useNavigate()
@@ -27,7 +27,7 @@ const Chat = () => {
             <Sidepanel />
             <Chats />
             <div className='join'>
-                <Chatbox />
+                <Chatbox  name={"LK"}/>
                 {/* <div className='enter'>
                     What chat room would you like to enter? <br/>
                     <input onChange={(event)=>setRoomName(event.target.value)}/><br/>

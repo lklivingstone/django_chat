@@ -7,10 +7,6 @@ import {store, persistor} from './Redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import WebSocketInstance from './Websocket/Websocket';
 function renderApp() {
-    const componentMount= () => {
-        WebSocketInstance.connect();
-    }
-    componentMount()
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>

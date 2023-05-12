@@ -1,13 +1,9 @@
 .left {
     display: flex;
-    /* width: 100%; */
     justify-content: "flex-start";
-    color: green;
-    align-items: flex-end;
 }
 
 .right {
-    /* width: 100%; */
     display: flex;
     justify-content: "flex-end"
 }
@@ -21,7 +17,6 @@ CHAT
 
 .Chat {
     color: black;
-    background-color: #5cdb95;
     width: 100vw;
 
 }
@@ -32,7 +27,6 @@ CHAT
     /* margin-top: 60px; */
     height: 100vh;
     display: flex;
-    background-color: #5cdb95;
     justify-content: flex-start;
     align-items: flex-start;
 }

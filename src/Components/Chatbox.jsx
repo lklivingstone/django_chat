@@ -1,4 +1,4 @@
-import './Pages.css';
+import './Chatbox.css';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import WebSocketInstance from '../Websocket/Websocket';
@@ -15,18 +15,19 @@ const { reverse } = Array;
 
 
 
-const Chatbox = () => {
-
-      // console.log(messages.length)
-      const location= useLocation();
-      const roomName= location.pathname.split("/")[2];
-  
-      const [chatLog, setChatLog] = useState('');
-      const [messageInput, setMessageInput] = useState('');
-      const [messageValue, setMessageValue]= useState('');
+const Chatbox = ({name}) => {
+    const ID= useSelector((state)=>state.user.chatID)
+    const recipient= useSelector((state)=>state.user.recipient)
+    const [messageInput, setMessageInput] = useState('');
+    const [messageValue, setMessageValue]= useState('');
     
-    const user = useSelector((state) => state.user.user.username);
+    const username = useSelector((state) => state.user.user.username);
     const [messages, setMessages] = useState([]);
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView()
+    }
 
     useEffect(() => {
         const waitForSocketConnection = (callback) => {
@@ -44,47 +45,55 @@ const Chatbox = () => {
         }, 100);
         };
 
-    WebSocketInstance.addCallbacks(setMessagesCallback, addMessageCallback);
-    waitForSocketConnection(() => {
-      WebSocketInstance.fetchMessages(user);
-    //   console.log(29, user);
-    });
-  }, [user]);
+        WebSocketInstance.addCallbacks(setMessagesCallback, addMessageCallback);
+        waitForSocketConnection(() => {
+            WebSocketInstance.fetchMessages(username, ID);
+        });
+        WebSocketInstance.connect(ID)
+    }, [ID]);
 
-  const setMessagesCallback = (newMessages) => {
-    setMessages((prevMessages) => [...newMessages.reverse(), ...prevMessages]);
-  };
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
 
-  const addMessageCallback = (message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
-  };
+    const setMessagesCallback = (newMessages) => {
+        setMessages((prevMessages) => [...newMessages.reverse()]);
+    };
 
-    // console.log(messages.length)
+    const addMessageCallback = (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+    };
+
 
     const renderMessages = (messages) => {
         return (
           <ul style={{width: "100%"}}>
             {messages.map(message => (
-              <li 
-              style={{display: "flex",
-                width: "100%",
-                listStyleType: "none"}}
+                <li
+                className={message.author === username ? 'right' : 'left'} 
+                style={{display: "flex",
+                marginBottom: "15px",
+                listStyleType: "none",
+                justifyContent: message.author === username ? "flex-end" : 'flex-start'
+                }}
                 key={message.id}>
-                    <div className={message.author === user ? 'right' : 'left'}>
-                        {message.content}
-                    </div>
+                        
+                    <Paper elevation={3} variant="outlined" 
+                    style={{padding: "5px 30px"}}
+                    sx={{backgroundColor: "transparent", border: "1px solid #edf5e1" }}
+                    >
+                            {message.content}
+
+                    </Paper>
+                        {/* </p>
+                    </div> */}
               </li>
             ))}
+            <div ref={messagesEndRef} />
           </ul>
         );
       };
 
-    
-
-
-
-   
-  
   
     const handleSendMessageClick = (event) => {
         if (messageInput.length==0) {
@@ -94,9 +103,10 @@ const Chatbox = () => {
         const messageObject= {
             content: messageInput,
             command: 'new_message',
-            from: user 
+            from: username,
+            chatID: ID
         };
-        // console.log(messageObject)
+        
         setMessageValue('')
         setMessageInput('');
         WebSocketInstance.newChatMessage(messageObject)
@@ -124,7 +134,6 @@ const Chatbox = () => {
             value={messageValue}
             onChange={(e)=>hangleMessageInput(e.target.value)}
             onKeyDown={handleKeyDown}
-
         />
     );
   
@@ -142,16 +151,18 @@ const Chatbox = () => {
           elevation={0} 
           variant="outlined" square
           component="form"
-        sx={{borderColor: 'green', border: "1", backgroundColor: "transparent", borderRadius: "0",  display: 'flex', alignItems: 'center', width: "100%" }}
+        sx={{border: "0", backgroundColor: "#031d3b", borderRadius: "250px",  display: 'flex', alignItems: 'center', justifyContent: "center", width: "98%" }}
+        // sx={{borderColor: 'green', border: "1", backgroundColor: "transparent", borderRadius: "250px",  display: 'flex', alignItems: 'center', width: "100%" }}
+      
       >
         <InputBase
-          sx={{ ml: 1, flex: 1, variant:"outlined", }}
-          placeholder="Search..."
+          sx={{ ml: 1, flex: 1, variant:"outlined", color: "#edf5e1", paddingLeft: "10px"}}
+          placeholder="type..."
           value={messageValue}
           onChange={(e)=>hangleMessageInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <IconButton type="button" sx={{ color: "green" }} aria-label="search">
+        <IconButton type="button" sx={{ color: "#2c527d" }} aria-label="search">
           <SendOutlinedIcon onClick={(e)=>handleSendMessageClick(e)}/>
         </IconButton>
         
@@ -163,32 +174,44 @@ const Chatbox = () => {
         <div style={{
           height: "100vh", 
           width: "100%",
+          paddingTop: "70px",
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          backgroundColor: "#5cdb95"
         }}>
+            <div style={{
+                height: "70px",
+                padding: "0px",
+                position: "fixed",
+                top: 0,
+                backgroundColor: "#5cdb95",
+                color: "#031d3b",
+                borderBottom: "3px solid  #05386b",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                paddingLeft: "30px"
+            }}>
+                <h1>{recipient}</h1>
+            </div>
             <div
                 style={{
-                  paddingTop: "70px",
                     padding: "20px",
                     flex: 1, 
                     width: "100%",
-                    background: 'grey',
                     display: "flex",
-                    // border: "1px solid black"
+                    overflowY: "auto"
                 }}
             >
                 {renderMessages(messages)}
             </div>
-            {/* <br /> */}
-            {/* <br /> */}
-            {/* <br /> */}
             <div style={{
               height: "60px",
               // position: "fixed",
               // bottom: '0',
               display:"flex",
               alignItems: "center",
-              backgroundColor: "white"
+              backgroundColor: "#5cdb95"
             }}>
               {/* {messageInputField}
               {sendMessageButton} */}

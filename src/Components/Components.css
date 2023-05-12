@@ -1,3 +1,5 @@
+
+
 .sidepanel {
     display: flex;
     flex-direction: column;
@@ -6,16 +8,19 @@
     top: 0;
     left: 0;
     height: 100vh;
-    background-color: grey;
+    background-color: #379683;
     text-align: center;
 }
 
 .top {
+    padding-top: 20px;
     flex: 7;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
+    gap: 20px;
 }
 
 .bottom {
@@ -24,6 +29,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
 }
 
 
@@ -36,7 +44,7 @@
     left: 50px;
     height: 100vh;
     overflow-y: auto;
-    background-color: rgb(89, 89, 89);
+    background-color: #8ee4af;
 }
 
 .each-chat-div {
@@ -59,7 +67,7 @@
 }
 
 .each-chat-li:hover {
-    background-color: #c6c6c6;
+    background-color: #bdffd6;
     cursor: pointer;
 }
 
@@ -68,5 +76,5 @@
     height: 0.3px;
     margin-right: 150x;
     padding-left: 150px;
-    background-color: #c6c6c6;
+    background-color: #edf5e1;
 }

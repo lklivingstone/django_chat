@@ -7,10 +7,10 @@ import {
   Navigate
 } from "react-router-dom"
 import Chat from './Pages/Chat';
-import Room from './Pages/Chatbox';
 import { useSelector } from 'react-redux';
 import { Login } from './Pages/Login';
 import { Logout } from './Pages/Logout';
+import Home from './Pages/Home';
 
 function App() {
   const user= useSelector((state)=>state.user.user)
@@ -18,8 +18,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element= {<Chat />}  />
-        <Route path="/room/:id" element= {<Room />} />
+        <Route exact path="/" element= {<Home />}  />
+        <Route path="/chat/:id" element= {<Chat />} />
         <Route path="/login" element= {user ? <Navigate to="/" replace /> :  <Login />} />
         <Route path="/logout" element= {user ? <Logout /> : <Navigate to="/" replace />} />
       </Routes>
