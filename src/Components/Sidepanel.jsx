@@ -56,6 +56,15 @@ const Sidepanel = () => {
         if (response.status===400) {
             setResponseMessage(response.data)
         }
+        else {
+            window.location.reload(false);
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.code === "Enter") {
+            handleClick(e)
+        }
     };
 
     return (
@@ -71,10 +80,10 @@ const Sidepanel = () => {
                 style={{cursor: 'pointer', color: "#031d3b"}} />
             </div>
             <div>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Chat with...</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
+            <Dialog open={open} onClose={handleClose} >
+                <DialogTitle style={{backgroundColor: "#379683", color: "#031d3b"}}>Chat with...</DialogTitle>
+                <DialogContent style={{backgroundColor: "#8ee4af"}}>
+                    <DialogContentText style={{color: "#031d3b"}}>
                         Enter their username
                     </DialogContentText>
                     <TextField
@@ -86,14 +95,16 @@ const Sidepanel = () => {
                         fullWidth
                         variant="standard"
                         onChange={(e)=>handleChatInput(e.target.value)}
+                        style={{color: "#031d3b"}}
+                        onKeyDown={handleKeyDown}
                     />
                 </DialogContent>
                 <p style={{display: "flex", justifyContent: "center", alignItems: "center", color: "red"}}>
                     {responseMessage}
                 </p>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClick}>Chat</Button>
+                <DialogActions style={{backgroundColor: "#8ee4af"}}>
+                    <Button style={{color: "#031d3b"}} onClick={handleClose}>Cancel</Button>
+                    <Button style={{color: "#031d3b"}} onClick={handleClick}>Chat</Button>
                 </DialogActions>
             </Dialog>
             </div>

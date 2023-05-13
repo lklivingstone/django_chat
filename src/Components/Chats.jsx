@@ -45,7 +45,7 @@ const Chats = () => {
     const renderChats = (chats) => {
         return (
             <ul>
-                {chats.map(chat => (
+                {chats.length>0 && chats?.map(chat => (
                     // <Link to={`/chat/${chat.id}`}
                     // onClick={handleClick(chat.id)}
                     //         style={{

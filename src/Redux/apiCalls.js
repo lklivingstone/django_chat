@@ -15,9 +15,26 @@ export const login = async (dispatch, user) => {
 
 export const register = async (user) => {
     try{
-        const res= await publicRequest.post("/api/auth/register/", user)
-    }catch(err) {
+        user= {
+            username: user['username'],
+            email: user['email'],
+            password: user['password'],
+            first_name: user['firstname'],
+            last_name: user['lastname'],
+        }
         
+        const response= await publicRequest.post("/api/auth/register/", user)
+
+        return {
+            status: 200,
+            message: response.data
+        }
+    }catch(err) {
+
+        return {
+            status: 400,
+            message: err['response']['data']
+        }
     }
 }
 
@@ -33,11 +50,16 @@ export const fetchChats= async(token, username) => {
     }
     catch(err) {
         console.error(err)
+        return {
+            status: 400,
+            message: err
+        }
     }
 }
 
 export const createChat= async(username, friend, token) => {
     try {
+        console.log(username, friend, token)
         const response = await axios.post(`http://127.0.0.1:8000/api/chat/create/`, 
         {
             messages: [],

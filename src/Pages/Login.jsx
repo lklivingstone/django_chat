@@ -18,17 +18,25 @@ export const Login = () => {
         login(dispatch, { username, password })
     }
 
+    const handleKeyDown = (e) => {
+        if (e.code === "Enter") {
+            handleClick(e)
+        }
+    };
+
     return (
                 <div style={{width: "100%",
                     height: "100vh",
-                    backgroundImage: "linear-gradient(to top, rgb(200, 207, 227, 0.5), rgba(200, 207, 227, 1))",
+                    backgroundColor: "#8ee4af",
+                    color: "#edf5e1",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center"}}>
                     <div style={{
                         width: "50%",
                         padding: "20px",
-                        backgroundColor: "white"}}>
+                        borderRadius: "7px",
+                        backgroundColor: "#379683",}}>
                         <h1 style={{
                             margin: "10px 10px",
                             fontWeight: "200",}}>
@@ -47,7 +55,8 @@ export const Login = () => {
                                 flex: "1",
                                 minWidth: "40%",
                                 margin: "10px 10px",
-                                padding: "10px",}} placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)}/>
+                                padding: "10px",}} placeholder="Password" type="password" onChange={(e)=>setPassword(e.target.value)} 
+                                onKeyDown={handleKeyDown}/>
                             <a style={{
                                 margin: "5px 10px",
                                 fontSize: "12px",
@@ -57,10 +66,11 @@ export const Login = () => {
                                     cursor: "pointer"
                                     // backgroundColor: Colors.light_gray
                                 }}}>Forgot Password</a>
-                            <a style={{
+                            <a href="/register" style={{
                                 margin: "5px 10px",
                                 fontSize: "12px",
                                 textDecoration: "underline",
+                                color: "#edf5e1",
                                 "&:hover": {
                                     textDecoration: "none",
                                     cursor: "pointer"
@@ -77,12 +87,13 @@ export const Login = () => {
                                     padding: "10px 65px",
                                     border: "none",
                                     cursor: "pointer",
-                                    backgroundColor: "#e1e6f5",
+                                    backgroundColor: "#031d3b",
+                                    color: "#edf5e1",
                                     "&:disabled" : {
                                         color: "#e1e6f5",
                                         cursor: "not-allowed"
                                     }}} variant="filled" onClick={handleClick} disabled={isFetching}>
-                                        Login
+                                        LOGIN
                                 </button>
                             </div>
                             <div style={{
@@ -91,15 +102,15 @@ export const Login = () => {
                                 justifyContent: "center",
                                 margin: "10px 0px 0px 0px"}}>
                                 <Link to="/register" style={{margin: "5px 10px",
-                                    fontSize: "12px",
+                                    fontSize: "17px",
                                     textDecoration: "underline",
                                     "&:hover": {
                                         textDecoration: "none",
                                         cursor: "pointer"
                                         // backgroundColor: Colors.light_gray
                                     }, 
-                                    textDecoration: "none", color: "black"}} >
-                                    
+                                    textDecoration: "none", 
+                                    color: "#edf5e1",}} >
                                         Register
                                 </Link>
                             </div>

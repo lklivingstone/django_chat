@@ -78,8 +78,8 @@ const Chatbox = ({name}) => {
                 }}
                 key={message.id}>
                         
-                    <Paper elevation={3} variant="outlined" 
-                    style={{padding: "5px 30px"}}
+                    <Paper variant="outlined" 
+                    style={{padding: "5px 30px", fontWeight: "600"}}
                     sx={{backgroundColor: "transparent", border: "1px solid #edf5e1" }}
                     >
                             {message.content}
