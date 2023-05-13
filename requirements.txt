@@ -34,8 +34,6 @@ rest-framework-simplejwt==0.0.2
 service-identity==21.1.0
 six==1.16.0
 sqlparse==0.4.4
-Twisted==22.10.0
-twisted-iocpsupport==1.0.3
 txaio==23.1.1
 typing_extensions==4.5.0
 tzdata==2023.3
