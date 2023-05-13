@@ -38,7 +38,7 @@ def protected_endpoint(request):
 
 def last_15_messages(chatID):
     chat= get_object_or_404(Chat, id= chatID)
-    return chat.messages.order_by('-timestamp').all()[:15]
+    return chat.messages.order_by('-timestamp').all()
 
 def get_user_contact(username):
     user= get_object_or_404(User, username=username)
