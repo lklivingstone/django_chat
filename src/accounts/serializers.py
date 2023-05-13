@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import CustomUser
 
+from chat.models import Contact
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -22,4 +24,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
         )
+
+        contact= Contact(user=user)
+        contact.save()
+        
         return user
