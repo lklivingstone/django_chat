@@ -1,5 +1,7 @@
 ### THE APPLICATION IS NOT YET DEPLOYED DUE TO SOME ISSUES WITH AZURE SERVING ASGI REQUESTS. 
 
+[Click here for demonstration](#demonstration)
+
 # Chat App
 
 This is a Full Stack Chat Application. It is built with the aim of learning django for complex use cases, understanding and implementing websockets.
@@ -7,12 +9,13 @@ This is a Full Stack Chat Application. It is built with the aim of learning djan
 It is built with Django, Channels, Redis and DRF, and the client is built with React. 
 
 
+
 ## Table of content
 
 * [Why](#why)
 * [Project Description](#project-description)
 * [Links](#links)
-* [Demonstration](#demostration)
+* [Demonstration](#demonstration)
 
 
 ## Why
@@ -54,7 +57,7 @@ For deployment, Microsoft Azure was used due to the availablity of free credits.
 Link to the website: [link](https://textyyy.netlify.app/)
 The link is for the client side of the app. The backend is currently having issues with deployment, hence the interface is not accessible. You can watch the demonstration video below!
 
-## Demostration
+## Demonstration
 
 Video demonstrating the login and registration of two users and real time chatting between them:
 
