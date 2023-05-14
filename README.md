@@ -44,8 +44,11 @@ The new_message method handles the creation of a new message. It receives the me
 
 The send_chat_message and send_message methods facilitate sending messages to clients. The former broadcasts the message to all clients in the specific group associated with the chat room, while the latter sends the message to the individual client who triggered the event. These methods utilize the async_to_sync function to ensure synchronous execution of the Channel layer's group send and individual send operations, respectively.
 
+## Deployment
+
+For deployment, Microsoft Azure was used due to the availablity of free credits. A Virtual Machine was created to host a django server using gunicorn, daphne and nginx. Due to issues with handling ASGI requests (wss), the api could not be deployed.
 
 ## Links
 
-Link to the website: [link](https://textyyy.netlify.app/))
+Link to the website: [link](https://textyyy.netlify.app/)
 
