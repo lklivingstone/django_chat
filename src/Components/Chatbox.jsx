@@ -80,7 +80,7 @@ const Chatbox = ({name}) => {
                         
                     <Paper variant="outlined" 
                     style={{padding: "5px 30px", fontWeight: "600"}}
-                    sx={{backgroundColor: "transparent", border: "1px solid #edf5e1" }}
+                    sx={{backgroundColor: "#172a46", border: "1px solid #64ffdb", color: "white"}}
                     >
                             {message.content}
 
@@ -151,12 +151,12 @@ const Chatbox = ({name}) => {
           elevation={0} 
           variant="outlined" square
           component="form"
-        sx={{border: "0", backgroundColor: "#031d3b", borderRadius: "250px",  display: 'flex', alignItems: 'center', justifyContent: "center", width: "98%" }}
+        sx={{border: "2", borderColor: '#64ffdb', backgroundColor: "#031d3b", borderRadius: "250px",  display: 'flex', alignItems: 'center', justifyContent: "center", width: "98%" }}
         // sx={{borderColor: 'green', border: "1", backgroundColor: "transparent", borderRadius: "250px",  display: 'flex', alignItems: 'center', width: "100%" }}
       
       >
         <InputBase
-          sx={{ ml: 1, flex: 1, variant:"outlined", color: "#edf5e1", paddingLeft: "10px"}}
+          sx={{ ml: 1, flex: 1, variant:"outlined", color: "white", paddingLeft: "10px"}}
           placeholder="type..."
           value={messageValue}
           onChange={(e)=>hangleMessageInput(e.target.value)}
@@ -177,15 +177,15 @@ const Chatbox = ({name}) => {
           paddingTop: "70px",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "#5cdb95"
+          backgroundColor: "#0a192f"
         }}>
             <div style={{
                 height: "70px",
                 padding: "0px",
                 position: "fixed",
                 top: 0,
-                backgroundColor: "#5cdb95",
-                color: "#031d3b",
+                backgroundColor: "#0a192f",
+                color: "white",
                 borderBottom: "3px solid  #05386b",
                 width: "100%",
                 display: "flex",
@@ -211,7 +211,7 @@ const Chatbox = ({name}) => {
               // bottom: '0',
               display:"flex",
               alignItems: "center",
-              backgroundColor: "#5cdb95"
+              backgroundColor: "#0a192f"
             }}>
               {/* {messageInputField}
               {sendMessageButton} */}

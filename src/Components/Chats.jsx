@@ -67,11 +67,11 @@ const Chats = () => {
                                 onClick={(e)=>handleClick(chat)}
                                 className='each-chat-div'>
                                     <h1>
-                                        <SentimentDissatisfiedIcon sx={{color: "#031d3b"}}/>
+                                        <SentimentDissatisfiedIcon sx={{color: "white"}}/>
                                     </h1>
                                     <p
                                         style={{paddingLeft: "10px",
-                                    color: "#031d3b"}}
+                                        color: "white"}}
                                     >
                                         {chat.participants[0]==username? chat.participants[1] : chat.participants[0]} and you
                                     </p>

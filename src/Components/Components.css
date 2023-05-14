@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    background-color: #379683;
+    background-color: #000a18;
     text-align: center;
 }
 
@@ -44,7 +44,7 @@
     left: 50px;
     height: 100vh;
     overflow-y: auto;
-    background-color: #8ee4af;
+    background-color: #172a46;
 }
 
 .each-chat-div {
@@ -67,7 +67,7 @@
 }
 
 .each-chat-li:hover {
-    background-color: #bdffd6;
+    background-color: #0e1b2f;
     cursor: pointer;
 }
 

@@ -60,7 +60,7 @@ export const fetchChats= async(token, username) => {
 export const createChat= async(username, friend, token) => {
     try {
         console.log(username, friend, token)
-        const response = await axios.post(`http://127.0.0.1:8000/api/chat/create/`, 
+        const response = await axios.post(`http://127.0.0.1:8000/`, 
         {
             messages: [],
             participants: [username, friend]

@@ -72,12 +72,12 @@ const Sidepanel = () => {
             <div className='top'>
                 <AddOutlinedIcon 
                 onClick={handleClickOpen}
-                style={{cursor: 'pointer', color: "#031d3b"}}
+                style={{cursor: 'pointer', color: "#64ffdb"}}
                 />
                 <InboxOutlinedIcon
-                style={{cursor: 'pointer', color: "#031d3b"}} />
+                style={{cursor: 'pointer', color: "#64ffdb"}} />
                 <GroupsOutlinedIcon 
-                style={{cursor: 'pointer', color: "#031d3b"}} />
+                style={{cursor: 'pointer', color: "#64ffdb"}} />
             </div>
             <div>
             <Dialog open={open} onClose={handleClose} >
@@ -112,10 +112,10 @@ const Sidepanel = () => {
                 <Link to="/logout" 
                     style={{color: "black"}}>
                     <AccountCircleOutlinedIcon 
-                    style={{cursor: 'pointer', color: "#031d3b"}} />
+                    style={{cursor: 'pointer', color: "#64ffdb"}} />
                 </Link>
                 <SettingsOutlinedIcon 
-                style={{cursor: 'pointer', color: "#031d3b"}} />
+                style={{cursor: 'pointer', color: "#64ffdb"}} />
             </div>
         </div>
     )
