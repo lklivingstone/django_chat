@@ -56,5 +56,11 @@ The link is for the client side of the app. The backend is currently having issu
 
 ## Demostration
 
+Video demonstrating the login and registration of two users and real time chatting between them:
+
 https://github.com/lklivingstone/django_chat/assets/74340009/4606d96b-2167-47af-82bb-69386ce3c0b4
+
+Video demonstrating of loading chats from contacts, switching between chats and real time communication:
+
+https://github.com/lklivingstone/django_chat/assets/74340009/df1941d6-362e-4bd0-9d72-c6c6df22bb70
 
