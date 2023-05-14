@@ -58,10 +58,8 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:9000",
-]
+
+CORS_ORIGIN_ALLOW_ALL=True
 
 ROOT_URLCONF = 'chatapp.urls'
 
@@ -170,3 +168,78 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# sudo apt-get update
+
+# sudo apt-get install python3-pip python3-dev libpq-dev nginx
+
+# sudo -H pip3 install --upgrade pip
+
+# sudo -H pip3 install virtualenv
+
+# virtualenv env
+
+# source env/bin/activate
+
+# pip install django gunicorn psycopg2-binary
+
+
+# gunicorn --bind 0.0.0.0:8000 chatapp.wsgi
+
+
+# [Unit]
+# Description=gunicorn daemon
+# After=network.target
+# [Service]
+# User=lk
+# Group=www-data
+# WorkingDirectory=/home/lk/django_chat
+# ExecStart=/home/lk/django_chat/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/lk/django_chat.sock chatapp.wsgi:application
+# [Install]
+# WantedBy=multi-user.target
+
+
+# upstream channels-backend {
+#  server localhost:8001;
+# }
+# server {
+#     listen 80;
+#     server_name server_domain_or_IP;
+#     location = /favicon.ico { access_log off; log_not_found off; }
+#     location /static/ {
+#         root /home/lk/django_chat;
+#     }
+#     location /media/ {
+#         root /home/lk/django_chat;
+#     }
+# location / {
+#         include proxy_params;
+#         proxy_pass http://unix:/home/lk/django_chat.sock;
+#     }
+# location /ws/ {
+#         proxy_http_version 1.1;
+#         proxy_set_header Upgrade $http_upgrade;
+#         proxy_set_header Connection "upgrade";
+#         proxy_redirect off;
+#         proxy_pass http://127.0.0.1:8001;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Host $server_name;
+#     }
+# }
+
+# [Unit]
+# Description=WebSocket Daphne Service
+# After=network.target
+
+# [Service]
+# Type=simple
+# User=lk
+# WorkingDirectory=/home/lk/django_chat
+# ExecStart=/home/lk/django_chat/env/bin/python /home/lk/django_chat/env/bin/daphne -b 0.0.0.0 -p 8001 chatapp.asgi:application
+# Restart=on-failure
+
+# [Install]
+# WantedBy=multi-user.target
