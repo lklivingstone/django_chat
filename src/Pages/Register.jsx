@@ -109,17 +109,21 @@ export const Register = () => {
                 console.log(username, email)
                 if (username && email){
                     setWarning("Username and Email already in use!")
+                    alert("Username and Email already in use!")
                 }
                 else if (email) {
                     setWarning("Email already in use!")
+                    alert("Email already in use!")
                 }
                 else if (username){
                     setWarning("Username already in use!")
+                    alert("Username already in use!")
                 }
                 else {
                     setWarning("Invalid Credentials!")
+                    alert("Invalid Credentials!")
                 }
-                alert(warning)
+                
             }
         }
     }

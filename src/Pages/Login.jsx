@@ -96,6 +96,8 @@ export const Login = () => {
                                         LOGIN
                                 </button>
                             </div>
+                            <br/>
+                            {error && <span style={{color: "red"}}>Something went wrong!</span>}
                             <div style={{
                                 display:"flex",
                                 alignItems: "center",
