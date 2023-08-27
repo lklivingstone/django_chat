@@ -40,7 +40,7 @@ export const register = async (user) => {
 
 export const fetchChats= async(token, username) => {
     try {
-        const response = await axios.get(`https://textyyyapi.azurewebsites.net/api/chat?username=${username}`, {
+        const response = await axios.get(`https://127.0.0.1:8000/api/chat?username=${username}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -60,7 +60,7 @@ export const fetchChats= async(token, username) => {
 export const createChat= async(username, friend, token) => {
     try {
         console.log(username, friend, token)
-        const response = await axios.post(`https://textyyyapi.azurewebsites.net/api/chat/create/`, 
+        const response = await axios.post(`https://127.0.0.1:8000/api/chat/create/`, 
         {
             messages: [],
             participants: [username, friend]

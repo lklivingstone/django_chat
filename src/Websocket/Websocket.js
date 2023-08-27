@@ -14,9 +14,9 @@ class WebSocketService {
     constructor() {
         this.socketRef= null;
     }
-    // https://textyyyapi.azurewebsites.net
+    // https://https://textyyyapi.azurewebsites.net
     connect(chatID) {
-        const path= `wss://textyyyapi.azurewebsites.net/ws/chat/${chatID}/`
+        const path= `ws://127.0.0.1:8000/ws/chat/${chatID}/`
         console.log(path)
         this.socketRef= new WebSocket(path)
         this.socketRef.onopen= () => {
